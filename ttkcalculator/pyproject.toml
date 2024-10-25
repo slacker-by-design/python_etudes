@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools >= 61.3", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ttkcalculator"
+version = "2024.0.0"
+authors = [
+    { name="Slacker by Design" },
+]
+description = "Simple TKInter Calculator"
+readme = "README.md"
+requires-python = ">=3.12"
+classifiers = [
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest~=8.3.3"
+]
+
+[tool.setuptools]
+packages = ["ttkcalculator"]
+
+[tool.pytest.ini_options]
+pythonpath = ["tests"]
+addopts = [
+    "--import-mode=importlib",
+]
