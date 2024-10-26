@@ -378,7 +378,7 @@ class Calculator:
         Evaluates the '<operand> <operator>' or '<operand> <operator> <operand>'
         expression and returns the result as a string.
 
-        A None is returned in case of an error (e.g. division by zero,
+        An Error instance is returned in case of an error (e.g. division by zero,
         missing operator or operand, unknown operator)
         """
         value = self.decimal_result
