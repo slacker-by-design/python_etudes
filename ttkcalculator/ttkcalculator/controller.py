@@ -50,12 +50,12 @@ class KeypadController:
             keypad_view: KeypadView,
             calculator: Calculator,
     ):
-        self._display: DisplayView = display_view
-        self._keypad: KeypadView = keypad_view
-        self._calculator: Calculator = calculator
         # subtract 2 for decimal separator and minus sign
         if (display_view.max_items - 2) < calculator.precision:
             raise ValueError('DisplayView is incapable of showing full Calculator precision.')
+        self._display: DisplayView = display_view
+        self._keypad: KeypadView = keypad_view
+        self._calculator: Calculator = calculator
         self._error: Error | None = None
         self._clear_on_update = False       #TODO: think of a better name for this one!
         self._blocked: set[KeyCode]  = set()
