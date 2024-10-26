@@ -229,6 +229,7 @@ class TkKeypad(ttk.Frame):
         """
         Hardcoded key-bindings:
         'S' and 's' to '±' (invert sign / negate) button
+        '.' and ',' to '.' (decimal point) button
         """
         # TKInter requires specific style suffix based on the component!
         style_id = 'Num.Toolbutton'
@@ -248,7 +249,7 @@ class TkKeypad(ttk.Frame):
         TkKey(self, style_id, KeyCode.TWO, self._command).grid(row=3, column=1)
         TkKey(self, style_id, KeyCode.THREE, self._command).grid(row=3, column=2)
         TkKey(self, style_id, KeyCode.ZERO, self._command).grid(row=4, column=0)
-        TkKey(self, style_id, KeyCode.DECIMAL_POINT, self._command).grid(row=4, column=1)
+        TkKey(self, style_id, KeyCode.DECIMAL_POINT, self._command, '.', ',').grid(row=4, column=1)
 
     def _build_operator_buttons(self):
         """
@@ -280,7 +281,7 @@ class TkKeypad(ttk.Frame):
         """
         Hardcoded key-bindings:
         'C', 'c' and '<Delete>' to 'C' (clear calculator state) button
-        '<Backspace>' to  '←' (delete last digit) button
+        '<BackSpace>' and <Left> to  '←' (delete last digit) button
         '=' and '<Return>' to '=' (calculate result) button
         """
         # TKInter requires specific style suffix based on the component!
@@ -291,7 +292,7 @@ class TkKeypad(ttk.Frame):
             background="gray85", foreground='orange2'
         )
         TkKey(self, style_id, KeyCode.CLEAR, self._command, 'C', 'c', '<Delete>').grid(row=0, column=0)
-        TkKey(self, style_id, KeyCode.BACKSPACE, self._command, '<BackSpace>').grid(row=0, column=1)
+        TkKey(self, style_id, KeyCode.BACKSPACE, self._command, '<BackSpace>', '<Left>').grid(row=0, column=1)
 
         style_id = 'Eq.Toolbutton'
         style.configure(
