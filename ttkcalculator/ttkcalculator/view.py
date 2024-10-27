@@ -8,8 +8,17 @@ from enum import StrEnum
 from tkinter import ttk
 from typing import Callable, Protocol, Any
 
+from ttkcalculator import _SYSTEM
+
 # Indicate what's relevant for other modules to import
 __all__ = ['KeyCode', 'Key', 'DisplayView', 'KeypadView']
+
+# 15 digits + decimal separator + minus sign
+_MAX_DISPLAY_ITEMS = 17
+""" Number of items / characters that fits on the display """
+
+_DEFAULT_FONTS = {'Windows': 'Consolas', 'Darwin': 'Courier', 'Linux': 'Courier'}
+_DEFAULT_FONT = _DEFAULT_FONTS.get(_SYSTEM, 'Courier')
 
 
 class KeyCode(StrEnum):
@@ -138,12 +147,6 @@ class TkKeypadView:
         """ Switches all registered buttons into 'not pressed' visual state """
         for button in self._buttons.values():
             button.release()
-
-
-_DEFAULT_FONT = 'Consolas'
-# 15 digits + decimal separator + minus sign
-_MAX_DISPLAY_ITEMS = 17
-""" Number of items / characters that fits on the display """
 
 
 class TkDisplay(ttk.Frame):
