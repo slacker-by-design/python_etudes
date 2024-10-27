@@ -21,7 +21,18 @@ Calculator can be operated by a mouse (left-click on the desired calculator
 button) or through a keyboard (see the [Key Bindings](#key-bindings) chapter).
 
 ## Calculation Errors
-T.B.D.
+There are basically three types of error a user can encounter
+
+- Overflow errors are reported by "Result too long" message on the display. This
+  means the result of the calculation contains more significant digits, than it
+  can be shown.
+- Division by zero error is reported through "Division by 0" message on the display.
+- General purpose error reported simply as "Error" is displayed in case of an
+  unexpected error (i.e. most likely unexpected calculator state due to a bug
+  in the program).
+
+The only way to recover from any error is to perform a calculator reset by pressing
+the `C` button.
 
 ## Key Bindings
 First column of every table in this chapter represents the key on the calculator's
