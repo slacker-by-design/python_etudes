@@ -152,14 +152,14 @@ class TkKeypadView:
 class TkDisplay(ttk.Frame):
     """ Custom Display TTK Widget. """
     def __init__(self, master: tk.Tk, contents: tk.StringVar):
-        super().__init__(master=master)
+        super().__init__(master=master, borderwidth=10)
         font_ = (_DEFAULT_FONT, 24)
         width_ = _MAX_DISPLAY_ITEMS
         display = ttk.Label(master=self, width=width_, font=font_,
-                            padding=(5, 1), background='gray85',
+                            padding=(5, 1), background='gray75',
                             anchor='e', textvariable=contents)
         display.pack(expand=True, fill='both')
-        self.pack(padx=10, pady=(10, 0), fill='x')
+        self.pack(fill='x')
 
 
 class TkKey(ttk.Button):

@@ -8,6 +8,8 @@ import ttkcalculator.model as model
 import ttkcalculator.view as view
 import ttkcalculator.controller as controller
 
+from tkinter import ttk
+
 
 def main():
     """
@@ -17,6 +19,8 @@ def main():
     together and start it up.
     """
     app = tk.Tk()
+    # set a theme which looks similarly on all platforms
+    ttk.Style().theme_use('clam')
     app.title('Simple TTK Calculator')
     app.resizable(width=False, height=False)
 
