@@ -36,7 +36,13 @@ for a complete list of key bindings).
 ## Installation
 Make sure you have [Python 3.12 or newer](https://www.python.org/downloads/) 
 installed on your system. Please note that the commands in the next chapters 
-use `python` but your system may require you to type `python3` instead.
+use `python` but your system may require you to type `python3` instead. 
+
+Moreover, some Python installations (e.g. on Ubuntu or on macOS if installed trough
+homebrew) by default do not contain TKInter Python package (usually called `python3-tk`
+or `python-tk`). You may need to use your package manager to check and possibly install
+the missing package (e.g. `sudo apt install python3-tk` on Ubuntu or 
+`brew install python-tk` on macOS).
 
 ### For Users
 - Choose your **installation folder** and open it in a terminal emulator
@@ -92,7 +98,7 @@ use `python` but your system may require you to type `python3` instead.
     should show a list of installed packages including `ttkcalculator` and `pytest`.
     In case `pytest` is missing, install it by typing
     ```shell
-    python -m pip install .[test]
+    python -m pip install ".[test]"
     ```
 - Run the tests
     ```shell
