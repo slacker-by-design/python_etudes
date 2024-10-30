@@ -22,6 +22,7 @@ class Error(IntEnum):
     """ IDs of different calculator errors """
     DIVISION_BY_ZERO = auto()
     RESULT_TOO_LARGE = auto()
+    RESULT_TOO_SMALL = auto()
     INVALID_NUMBER = auto()
     INVALID_STATE = auto()
 
@@ -360,16 +361,9 @@ class Calculator:
         digits = number.to_integral_value().as_tuple().digits
         if len(digits) > self._precision:
             return Error.RESULT_TOO_LARGE
-        try:
-            # shrink the result number's precision and round decimal part
-            # if necessary.
-            ctx = Context(
-                prec=self._precision, Emin=-self._precision,
-                Emax=self._precision, traps=[Overflow]
-            )
-            result = ctx.create_decimal(number)
-        except Overflow:
-            result = Error.RESULT_TOO_LARGE
+        result = round(number, self._precision - len(digits))
+        if result.is_zero() and not number.is_zero():
+            return Error.RESULT_TOO_SMALL
         return result
 
     @property
@@ -385,6 +379,5 @@ class Calculator:
         if isinstance(value, Error):
             return value
         int_value = value.to_integral_value()
-        beautified = int_value if value == int_value else value.normalize()
-        return str(beautified)
+        return str(int_value) if value == int_value else format(value.normalize(), 'f')
 

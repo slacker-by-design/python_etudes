@@ -177,7 +177,8 @@ class TestCalculatorResult:
                 ('1', Operator.SUBTRACT, '2.0', '-1'),
                 ('2.0', Operator.MULTIPLY, '-2', '-4'),
                 ('5', Operator.DIVIDE, '2', '2.5'),
-                ('25', Operator.DIVIDE, '3', '8.33333333333333')
+                ('25', Operator.DIVIDE, '3', '8.33333333333333'),
+                ('5.0', Operator.DIVIDE, '3', '1.66666666666667')
             ]
          )
     def test_both_operands(self, first, operator, second, expected):
@@ -201,6 +202,14 @@ class TestCalculatorResult:
         # run & verify
         assert calculator_.result == Error.RESULT_TOO_LARGE
 
+    def test_result_too_small(self):
+        # setup
+        calculator_ = Calculator(precision=15)
+        calculator_.replace_operand('0.00000000000015')
+        calculator_.add_operator(Operator.DIVIDE)
+        calculator_.replace_operand('30')
+        # run & verify
+        assert calculator_.result == Error.RESULT_TOO_SMALL
 
 class TestOperand:
     """ Essential Operand tests """

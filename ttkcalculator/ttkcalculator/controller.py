@@ -19,8 +19,9 @@ __all__ = ['KeypadController']
 class Error(StrEnum):
     """ Errors reported to user """
     DIVISION_BY_ZERO = 'Division by 0'
-    RESULT_TOO_LARGE = 'Result too long'
-    GENERAL_PURPOSE = 'Error'
+    RESULT_TOO_LARGE = 'Number too large'
+    RESULT_TOO_SMALL = 'Number too small'
+    GENERAL_PURPOSE = 'Unknown error'
 
 
 _KEY_TO_OPERATOR_MAP = {
@@ -74,6 +75,8 @@ class KeypadController:
                 self._error = Error.DIVISION_BY_ZERO
             case model.Error.RESULT_TOO_LARGE:
                 self._error = Error.RESULT_TOO_LARGE
+            case model.Error.RESULT_TOO_SMALL:
+                self._error = Error.RESULT_TOO_SMALL
             case model.Error():
                 self._error = Error.GENERAL_PURPOSE
             case str():
@@ -82,13 +85,15 @@ class KeypadController:
                 self._error = Error.GENERAL_PURPOSE
         # setup new controller & calculator state
         self._calculator.clear()
-        if self._error:
-            self._blocked = set(_KEYS_ALL_BUT_CLEAR)
-        else:
-            self._calculator.replace_operand(result)
+        self._keypad.release_all()
+        if not self._error:
+            # prefer failure to inaccurately processed operand
+            if not self._calculator.replace_operand(result):
+                self._error = Error.GENERAL_PURPOSE
             self._clear_on_update = True
             self._blocked.difference_update(_KEYS_OPERATORS)
-        self._keypad.release_all()
+        if self._error:
+            self._blocked = set(_KEYS_ALL_BUT_CLEAR)
 
     def _add_operator(self, operator_key: KeyCode):
         operator_ = Operator(_KEY_TO_OPERATOR_MAP[operator_key])
@@ -117,7 +122,6 @@ class KeypadController:
         # don't dispatch blocked keys
         if key_code in self._blocked:
             return
-
         # clean calculator state if the current number is a result
         # of previous calculation and the user started to type-in
         # new number without specifying the arithmetical operation

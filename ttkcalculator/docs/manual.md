@@ -23,11 +23,14 @@ button) or through a keyboard (see the [Key Bindings](#key-bindings) chapter).
 ## Calculation Errors
 There are basically three types of error a user can encounter
 
-- Overflow errors are reported by "Result too long" message on the display. This
+- Overflow errors are reported by "Number too large" message on the display. This
   means the result of the calculation contains more significant digits, than it
   can be shown.
+- Underflow errors are reported by "Number too small" message on the display. This
+  means the result of the calculation is a decimal number too small to be represented
+  even by all digits the calculator is capable of showing.
 - Division by zero error is reported through "Division by 0" message on the display.
-- General purpose error reported simply as "Error" is displayed in case of an
+- General purpose error reported simply as "Unknown error" is displayed in case of an
   unexpected error (i.e. most likely unexpected calculator state due to a bug
   in the program).
 
