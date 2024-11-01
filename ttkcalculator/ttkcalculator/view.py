@@ -17,7 +17,7 @@ __all__ = ['KeyCode', 'Key', 'DisplayView', 'KeypadView']
 _MAX_DISPLAY_ITEMS = 17
 """ Number of items / characters that fits on the display """
 
-_DEFAULT_FONTS = {'Windows': 'Consolas', 'Darwin': 'Courier', 'Linux': 'Courier'}
+_DEFAULT_FONTS = {'Windows': 'Consolas', 'Darwin': 'Menlo', 'Linux': 'Mono'}
 _DEFAULT_FONT = _DEFAULT_FONTS.get(_SYSTEM, 'Courier')
 
 
