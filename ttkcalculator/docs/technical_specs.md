@@ -3,7 +3,7 @@
 The purpose of the **TTK Calculator** project is purely educational. The goal was
 to demonstrate, how to separate the business logic from the presentation layer using
 a commonly recognized SW architecture pattern called 
-[Model-View-Controller](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller)
+[Model-View-Controller](https://en.wikipedia.org/wiki/Model–view–controller)
 (will be referred to as MVC further on in this document).
 
 > ## ⚠️Disclaimer⚠️
@@ -12,11 +12,13 @@ a commonly recognized SW architecture pattern called
 > There are many variations and derived distinct patterns such as Model-View-Adapter,
 > Model-View-Presenter or Model-View-Viewmodel to name few well known ones.
 > 
-> The variation used in this case slightly differs from the original MVC!
+> The variation used in this case slightly differs from the original MVC and is closer
+> to [Model-View-Presenter](https://en.wikipedia.org/wiki/Model–view–presenter)!
 
 ## What is MVC
-MVC is an architectural pattern used to separate program code of a GUI application into 
-distinct layers (this is also called separation of concerns).
+
+MVC is an architectural pattern used to separate program code of a GUI application
+into distinct layers (this is also called separation of concerns).
 
 ```mermaid
 flowchart TD

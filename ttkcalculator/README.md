@@ -1,21 +1,25 @@
 # Simple TTK Calculator
+
 The purpose of this project is purely educational. It aims to show, how
 to separate the business logic from the presentation layer using a variation
-of the [Model-View-Controller pattern](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller),
+of the [Model-View-Controller pattern](https://en.wikipedia.org/wiki/Model–view–controller),
 in this case with Python and TKInter. Anyone with an interest should feel
 free to use it as a basis for their own experiments.
 
 ## User Documentation
+
 The TTK Calculator app itself is rather plain and straightforward implementation
 of a simple desk calculator.
 
-It's been tested on recent (as of October 2024) versions Windows, macOS
-and Ubuntu. For more information about the system requirements, please
+![TTK Calculator animation](docs/ttk_calculator.gif)
+
+It's been tested on recent (as of October 2024) versions of 
+[Windows](./docs/ttk_calculator_win.png), [macOS](./docs/ttk_calculator_mac.png)
+and [Ubuntu](./docs/ttk_calculator_lin.png). For more information about the system requirements, please
 see the [Installation](#installation) chapter.
 
-![TTK Calculator screenshot](docs/ttk_calculator.png)
-
 ### Features
+
 - Support of integers and decimals with a precision of up to 15 digits
 - Addition (`+`), subtraction (`-`), multiplication (`×`) and division (`÷`)
   of two numbers
@@ -29,11 +33,13 @@ see the [Installation](#installation) chapter.
 - Reset of the calculator (e.g. after an error) is done via (`C`) button
 
 ### User Interaction
+
 Calculator can be operated by a mouse (left-click on the desired calculator
 button) or through a keyboard (see the [user manual](docs/manual.md#key-bindings)
 for a complete list of key bindings).
 
 ## Installation
+
 Make sure you have [Python 3.12 or newer](https://www.python.org/downloads/) 
 installed on your system. Please note that the commands in the next chapters 
 use `python` but your system may require you to type `python3` instead. 
@@ -45,6 +51,7 @@ the missing package (e.g. `sudo apt install python3-tk` on Ubuntu or
 `brew install python-tk` on macOS).
 
 ### For Users
+
 - Choose your **installation folder** and open it in a terminal emulator
 (a.k.a. command line) running **cmd**, **powershell**, **bash**, **zsh** or other
 **sh**-like shell.
@@ -64,6 +71,7 @@ the missing package (e.g. `sudo apt install python3-tk` on Ubuntu or
     ```
 
 ### For Developers
+
 - Choose your **installation folder** and clone the
   [GitHub repository](https://github.com/slacker-by-design/python_etudes) into it
 - Create a Python virtual environment
@@ -90,6 +98,7 @@ the missing package (e.g. `sudo apt install python3-tk` on Ubuntu or
     ```
 
 #### Running Tests
+
 - Make sure the `pytest` package is installed in your virtual environment
     The command
     ```shell
@@ -106,6 +115,7 @@ the missing package (e.g. `sudo apt install python3-tk` on Ubuntu or
     ```
 
 ## Additional Information
+
 Here's few more bits and pieces, which may be useful...
 
 - You may want to check the [TTK Calculator user manual](docs/manual.md)
@@ -114,4 +124,5 @@ Here's few more bits and pieces, which may be useful...
   case of TTK Calculator.
 
 ## License
+
 [MIT License](../LICENSE)
